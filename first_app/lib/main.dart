@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      home: Scaffold(body: Center(child: Text("HEllo world"))),
+    MaterialApp(
+      home: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Colors.black26, Colors.purple]),
+          ),
+          child: Center(child: Text("Hello world")),
+        ),
+      ),
     ),
   );
 }
