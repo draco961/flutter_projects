@@ -20,8 +20,8 @@ class GradientContainer extends StatelessWidget {
 
   void rollDice() {
     //print('Dice number: $diceNumber');
-    print(  'Dice number');
-  } 
+    print('Dice number');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,22 @@ class GradientContainer extends StatelessWidget {
       ),
       child: Center(
         child: Column(
-          
+          mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset('assets/images/dice-2.png', width: 200, height: 200),
-            TextButton(onPressed: rollDice, child: const Text('Click Me')),
+            //const SizedBox(height: 50),
+            TextButton(
+              onPressed: rollDice,
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.all(20),
+                foregroundColor: Colors.white,
+                textStyle: const TextStyle(fontSize: 28),
+              ),
+              child: const Text(
+                'Click Me',
+                style: TextStyle(backgroundColor: Colors.black),
+              ),
+            ),
           ],
         ),
         // StyledText('Styled Text'),
