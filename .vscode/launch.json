@@ -23,6 +23,12 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "adv_basics",
+            "cwd": "adv_basics",
+            "request": "launch",
+            "type": "dart"
         }
     ]
 }
