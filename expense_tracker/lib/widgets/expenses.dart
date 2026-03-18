@@ -35,6 +35,7 @@ class _ExpensesState extends State<Expenses> {
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
+      showDragHandle: true,
       builder: (ctx) => const NewExpense(),
     );
   }
