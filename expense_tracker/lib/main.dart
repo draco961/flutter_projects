@@ -9,13 +9,21 @@ var kColorScheme = ColorScheme.fromSeed(
 void main() {
   runApp(
     MaterialApp(
-      theme: ThemeData(
+      theme: ThemeData().copyWith(
         colorScheme: kColorScheme,
         appBarTheme: AppBarTheme().copyWith(
           backgroundColor: kColorScheme.onPrimaryContainer,
           foregroundColor: kColorScheme.primaryContainer,
         ),
-
+        cardTheme: const CardThemeData().copyWith(
+          color: kColorScheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8)
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
+          backgroundColor: kColorScheme.primaryContainer,
+          foregroundColor: kColorScheme.onPrimaryContainer,
+        )) ,
+        //textTheme: TextTheme().copyWith(titleLarge:   TextStyle().copyWith(fontWeight: FontWeight.normal))
         //useMaterial3: true
       ),
       home: const Expenses(),

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:first_app/gradient_container.dart';
 import 'package:flutter/material.dart';
 
 final randomizer = Random();
@@ -15,7 +16,8 @@ class DiceRoller extends StatefulWidget {
 
 class _DiceRollerState extends State<DiceRoller> {
   var currentDiceRoll = 2;
-  
+
+
   void rollDice() {
     // print('Dice number: $diceNumber');
     // print('pressed');
