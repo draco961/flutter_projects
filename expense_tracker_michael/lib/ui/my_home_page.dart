@@ -1,3 +1,7 @@
+import 'package:expense_tracker_michael/data/repositories/expense_repository.dart';
+import 'package:expense_tracker_michael/domain/models/expense.dart';
+import 'package:expense_tracker_michael/ui/expense_list.dart';
+import 'package:expense_tracker_michael/ui/new_expense.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -10,12 +14,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  List<Expense> expenses = ExpenseRepository().getExpenses();
 
-  void _incrementCounter() {
+  void addExpense(Expense expense) {
     setState(() {
-      _counter++;
+      expenses.add(expense);
     });
+  }
+
+  void openBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => Scaffold(body: NewExpense(addExpense)),
+    );
   }
 
   @override
@@ -24,25 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
-        actions: [IconButton(icon: const Icon(Icons.add), onPressed: () {})],
+        actions: [
+          IconButton(icon: const Icon(Icons.add), onPressed: openBottomSheet),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: Center(child: ExpenseList(expenses)),
     );
   }
 }
